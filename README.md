@@ -1,4 +1,4 @@
-# deep-reinforcement-learning-ppo-dpo  
+# deep-reinforcement-learning-ppo-dpo-rhlf  
 **Reinforcement Learning with Proximal Policy Optimization (PPO), Direct Preference Optimization (DPO), and Reinforcement Learning from Human Feedback (RLHF)**  
 
 This project explores advanced reinforcement learning techniques for solving control tasks in the Hopper environment, using engineered reward functions, human preference data, and learned reward models.  
