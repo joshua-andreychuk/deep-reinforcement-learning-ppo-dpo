@@ -37,15 +37,15 @@ Contains human-labeled comparisons of different policy rollouts to guide trainin
 ## Performance Results  
 
 ### Proximal Policy Optimization (PPO)  
-![PPO on Hopper-v4](assets/ppo_hopper.png)  
+(ppo_hopper.png)  
 The orange curve (no early termination) shows better performance, achieving higher returns overall compared to the blue curve (early termination). Early termination slows down learning and increases variability, suggesting that removing early termination allows for more stable long-term policy optimization. Both policies eventually flatten out at different levels, with the policy without early termination maintaining a higher average return and lower volatility compared to the policy with early termination.  
 
 ### Direct Preference Optimization (DPO)  
-![DPO on Hopper-v4](assets/hopper_dpo.png)  
+(hopper_dpo.png)  
 The DPO model starts with a sharp increase in performance but shows a decline in returns after iteration 20. This suggests that DPO may require further tuning (e.g., more preference data, better initialization) to sustain performance over time. Despite this, the model still achieves relatively high early returns, demonstrating its ability to optimize based solely on preferences without a reward function.  
 
 ### Reinforcement Learning from Human Feedback (RLHF)  
-![RLHF on Hopper-v4](assets/hopper_rlhf.png)  
+(hopper_rlhf.png)  
 The blue curve (“RLHF (original)”) is PPO trained on the true MuJoCo reward, and the orange curve (“RLHF (learned)”) is PPO trained on my learned reward model. The learned-reward policy steadily improves to around 600 return, demonstrating that a preference-trained reward can drive continuous-control learning—albeit at a lower absolute scale than the engineered baseline.  
 > **Note:** my reward model is trained with a Bradley–Terry (pairwise cross-entropy) objective to rank trajectories, not to regress true return magnitudes, so outputs naturally compress toward the middle of the scale. This compression explains why PPO on the learned reward tops out below the true-reward baseline.  
 
